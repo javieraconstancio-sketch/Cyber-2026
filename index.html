@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DDX · Audiencias Cyber 2026 · L'Oréal Chile</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:  #050709;
+  --dark:   #0A0E14;
+  --panel:  #0D1320;
+  --panel2: #111827;
+  --blue:   #1A6FFF;
+  --blue-l: #4D94FF;
+  --cyan:   #00D4FF;
+  --white:  #F0F4FF;
+  --gray:   #8A9BB5;
+  --gray-d: #3A4557;
+  --green:  #00E5A0;
+  --gold:   #C9A84C;
+  --pink:   #E91E8C;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;font-size:16px;overflow-x:hidden;cursor:none}
+
+.cursor{width:8px;height:8px;background:var(--pink);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen}
+.cursor-ring{width:32px;height:32px;border:1px solid rgba(233,30,140,.45);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.3}
+.page{position:relative;z-index:1}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 5vw 4rem;position:relative;overflow:hidden;border-bottom:1px solid var(--gray-d)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 15% 55%,rgba(233,30,140,.10) 0%,transparent 65%),radial-gradient(ellipse 45% 40% at 85% 25%,rgba(26,111,255,.07) 0%,transparent 60%)}
+.hero-top{position:absolute;top:2.5rem;right:5vw;text-align:right;opacity:0;animation:fadeIn 1s .6s forwards;display:flex;align-items:center;gap:1.5rem}
+.hero-top .logo{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.15em}
+.hero-top .period{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--gray);letter-spacing:.2em;margin-top:.3rem}
+.lang-toggle{display:flex;gap:0;border:1px solid var(--gray-d);overflow:hidden}
+.lang-btn{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;padding:.4rem .8rem;background:var(--panel);color:var(--white);border:none;border-right:1px solid var(--gray-d);cursor:pointer;transition:all .2s;text-transform:uppercase;opacity:.5}
+.lang-btn:last-child{border-right:none}
+.lang-btn.active{background:var(--pink);opacity:1}
+.lang-btn:hover{opacity:1}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.28em;color:var(--pink);text-transform:uppercase;margin-bottom:1.2rem;opacity:0;animation:fadeUp .8s .15s forwards;display:flex;align-items:center;gap:.8rem}
+.eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--pink)}
+.hero-h{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(4rem,11vw,9.5rem);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;opacity:0;animation:fadeUp .9s .3s forwards}
+.hero-h .outline{color:transparent;-webkit-text-stroke:2px var(--pink);display:block}
+.hero-h .solid{color:var(--white);font-size:clamp(2rem,4.5vw,4rem);font-weight:700;display:block;margin-top:.15em}
+.hero-h .solid em{color:var(--blue-l);font-style:normal}
+.hero-sub{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-style:italic;font-size:clamp(1rem,2vw,1.5rem);color:var(--gray);margin-top:1.5rem;max-width:540px;opacity:0;animation:fadeUp .9s .5s forwards}
+.hero-types{display:flex;gap:0;margin-top:2rem;border:1px solid var(--gray-d);width:fit-content;opacity:0;animation:fadeUp .9s .65s forwards}
+.htype{padding:.75rem 1.6rem;border-right:1px solid var(--gray-d);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(.9rem,1.8vw,1.2rem);letter-spacing:.08em;text-transform:uppercase;display:flex;flex-direction:column;cursor:default;transition:background .2s}
+.htype:last-child{border-right:none}
+.htype:hover{background:rgba(233,30,140,.07)}
+.htype .ht{color:var(--pink)}
+.htype .hd{font-family:'Barlow',sans-serif;font-weight:300;font-size:.58rem;letter-spacing:.12em;color:var(--white);margin-top:.25rem;text-transform:uppercase}
+.scroll-hint{position:absolute;bottom:1.8rem;right:5vw;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--gray);display:flex;align-items:center;gap:.5rem;animation:pulse 2.5s infinite}
+.scroll-hint::after{content:'';display:block;width:1px;height:36px;background:linear-gradient(to bottom,var(--pink),transparent)}
+
+/* LAYOUT */
+section{padding:5rem 5vw;border-bottom:1px solid var(--gray-d);position:relative}
+section::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--pink),transparent 55%);pointer-events:none}
+.sec-label{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.28em;color:var(--pink);text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.7rem}
+.sec-label::before{content:'';display:block;width:18px;height:1px;background:var(--pink)}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;text-transform:uppercase;margin-bottom:2rem}
+.sec-title em{color:var(--pink);font-style:normal}
+.div-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--gray-d);flex-wrap:wrap;gap:1rem}
+.div-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(3rem,7vw,5.5rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--pink);text-transform:uppercase}
+.div-info{font-size:.9rem;color:var(--white);max-width:380px;line-height:1.6;text-align:right}
+.rule{width:100%;height:1px;background:linear-gradient(90deg,var(--pink),transparent);margin:2rem 0}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* INSIGHT */
+.insight{border-left:3px solid var(--pink);padding:1.4rem 1.8rem;background:rgba(233,30,140,.06);margin:2rem 0;position:relative}
+.insight::before{content:'"';font-family:'Barlow Condensed',sans-serif;font-size:5rem;font-weight:900;color:rgba(233,30,140,.12);position:absolute;top:-.8rem;left:.8rem;line-height:1;pointer-events:none}
+.insight p{font-size:1rem;line-height:1.7;color:var(--white);position:relative;z-index:1}
+
+/* CONTEXT BOX */
+.ctx{background:rgba(26,111,255,.05);border-left:3px solid var(--blue);padding:1.2rem 1.6rem;margin-bottom:2rem}
+.ctx p{font-size:.88rem;line-height:1.75;color:var(--white)}
+.ctx p em{color:var(--pink);font-style:italic}
+
+/* PILLS */
+.pill{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;padding:.28rem .8rem;border:1px solid var(--gray-d);color:var(--white);text-transform:uppercase}
+.pill.m{border-color:rgba(26,111,255,.4);color:var(--blue-l)}
+.pill.g{border-color:rgba(0,229,160,.3);color:var(--green)}
+.pill.d{border-color:rgba(201,168,76,.3);color:var(--gold)}
+
+/* TABS */
+.tab-nav{display:flex;gap:0;border:1px solid var(--gray-d);width:fit-content;margin-bottom:2rem;overflow:hidden}
+.tab-btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;padding:.7rem 1.4rem;background:var(--panel);color:var(--white);border:none;border-right:1px solid var(--gray-d);cursor:pointer;transition:all .2s;white-space:nowrap}
+.tab-btn:last-child{border-right:none}
+.tab-btn:hover{background:rgba(233,30,140,.08)}
+.tab-btn.active{background:var(--pink);color:var(--white)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+
+/* METRIC CARDS */
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--gray-d);border:1px solid var(--gray-d);margin-bottom:2.5rem}
+.mc{background:var(--panel);padding:1.6rem 1.5rem;position:relative;overflow:hidden;transition:background .25s;cursor:default}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--blue-l));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.mc:hover::before{transform:scaleX(1)}
+.mc:hover{background:#101828}
+.mc-badge{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.mc-badge.pk{color:var(--pink)}.mc-badge.gr{color:var(--green)}.mc-badge.bl{color:var(--blue-l)}.mc-badge.gd{color:var(--gold)}
+.mc-badge::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor}
+.mc-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4.5vw,3.6rem);line-height:1;margin-bottom:.3rem}
+.mc-val.pk{color:var(--pink)}.mc-val.gr{color:var(--green)}.mc-val.bl{color:var(--blue-l)}.mc-val.gd{color:var(--gold)}
+.mc-lbl{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.14em;color:var(--white);text-transform:uppercase;margin-bottom:.8rem}
+.mc-compare{padding-top:.8rem;border-top:1px solid var(--gray-d);display:flex;flex-direction:column;gap:.25rem}
+.mc-compare span{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--white)}
+.mc-compare .v1{color:var(--pink)}
+.mc-compare .v2{color:var(--white);opacity:.5}
+.mc-delta{display:inline-flex;align-items:center;gap:.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;padding:.2rem .6rem;border-radius:2px;margin-bottom:.4rem}
+.mc-delta.up{background:rgba(0,229,160,.12);color:var(--green);border:1px solid rgba(0,229,160,.25)}
+.mc-delta.dn{background:rgba(233,30,140,.12);color:var(--pink);border:1px solid rgba(233,30,140,.25)}
+
+/* HORIZONTAL BAR CHART */
+.hbar-chart{display:flex;flex-direction:column;gap:.6rem;padding:.4rem 0}
+.hbar-row{display:grid;grid-template-columns:38px 1fr 54px;align-items:center;gap:.6rem;position:relative}
+.hbar-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.06em;color:var(--white);text-transform:uppercase;text-align:right}
+.hbar-track{height:24px;background:rgba(58,69,87,.4);border-radius:2px;position:relative;overflow:visible;cursor:pointer;transition:background .2s}
+.hbar-track:hover{background:rgba(58,69,87,.6)}
+.hbar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#0A3A8A,var(--blue-l));width:0;transition:width 1.1s cubic-bezier(.4,0,.2,1);position:relative}
+.hbar-ctr{position:absolute;right:-2px;top:50%;transform:translateY(-50%);width:8px;height:8px;background:var(--pink);border-radius:50%;border:2px solid var(--black);z-index:2}
+.hbar-ctr-label{position:absolute;right:-48px;top:50%;transform:translateY(-50%);font-family:'DM Mono',monospace;font-size:.68rem;color:var(--pink);font-weight:400;white-space:nowrap}
+.hbar-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white);text-align:left}
+.chart-card{background:var(--panel);border:1px solid var(--gray-d);padding:1.6rem}
+.chart-card-h{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.2em;color:var(--pink);text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap}
+.chart-legend-row{display:flex;gap:1.2rem;margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--gray-d)}
+.leg{display:flex;align-items:center;gap:.4rem;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--white);text-transform:uppercase}
+.leg-b{width:12px;height:7px;background:var(--blue-l);border-radius:1px;opacity:.5}
+.leg-d{width:8px;height:8px;background:var(--pink);border-radius:50%;border:1.5px solid var(--black)}
+
+/* ── TOOLTIP ── */
+.chart-tooltip{position:absolute;background:var(--panel2);border:1px solid var(--pink);padding:.8rem 1rem;border-radius:3px;pointer-events:none;opacity:0;transform:translateY(-100%) translateX(-50%);transition:opacity .2s;z-index:1000;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.chart-tooltip::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid var(--pink)}
+.chart-tooltip.show{opacity:1}
+.tt-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;color:var(--pink);text-transform:uppercase;margin-bottom:.4rem}
+.tt-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.3rem}
+.tt-row:last-child{margin-bottom:0}
+.tt-dot{width:8px;height:8px;border-radius:50%}
+.tt-text{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;color:var(--white)}
+
+/* VS GRID */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-d);border:1px solid var(--gray-d);margin:1.5rem 0}
+.vs-cell{background:var(--dark);padding:1.4rem 1.2rem;text-align:center;position:relative}
+.vs-cell.winner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--pink)}
+.vs-cell.loser::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-d)}
+.vs-type{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--white);text-transform:uppercase;margin-bottom:.5rem}
+.vs-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.6rem;line-height:1;margin-bottom:.2rem}
+.vs-num.pk{color:var(--pink)}.vs-num.gg{color:var(--gray-d)}
+.vs-sub{font-size:.78rem;color:var(--white);line-height:1.5}
+
+/* BRAND GRID */
+.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-d);border:1px solid var(--gray-d);margin:1.5rem 0}
+.brand-cell{background:var(--panel2);padding:1.5rem}
+.brand-h{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.3rem;gap:.5rem}
+.brand-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;color:var(--white);text-transform:uppercase;letter-spacing:.05em}
+.brand-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;color:var(--white);opacity:.6;text-transform:uppercase;margin-bottom:1rem}
+.bstat-row{display:flex;gap:.5rem;margin-bottom:.8rem;flex-wrap:wrap}
+.bstat{background:var(--panel);border:1px solid var(--gray-d);padding:.5rem .8rem;flex:1;min-width:80px}
+.bstat .bsv{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;line-height:1}
+.bstat .bsl{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--white);opacity:.6;text-transform:uppercase;margin-top:.15rem}
+.best-aud{font-size:.8rem;color:var(--white);line-height:1.6;padding-top:.8rem;border-top:1px solid var(--gray-d)}
+
+/* ── D2C PURCHASE BLOCK ── */
+.d2c-block{background:var(--dark);border:1px solid var(--gray-d);margin:2rem 0;position:relative;overflow:hidden}
+.d2c-block::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pink),var(--gold),var(--green))}
+.d2c-inner{display:grid;grid-template-columns:1fr 1fr 1fr 1.8fr;gap:1px;background:var(--gray-d)}
+.d2c-stat{background:var(--dark);padding:1.8rem 1.4rem;text-align:center}
+.d2c-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;line-height:1;margin-bottom:.3rem}
+.d2c-lbl{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:var(--white);text-transform:uppercase}
+.d2c-sub{font-size:.78rem;color:var(--white);opacity:.6;margin-top:.3rem}
+.d2c-note{background:var(--dark);padding:1.8rem 1.4rem;display:flex;align-items:center}
+.d2c-note p{font-size:.85rem;color:var(--white);line-height:1.7}
+.d2c-note p strong{color:var(--pink)}
+
+/* ── BEST PRACTICES — PROMINENT ── */
+.bp-section{margin-top:2.5rem}
+.bp-section-label{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.28em;color:var(--pink);text-transform:uppercase;margin-bottom:1rem;padding:.6rem 1rem;background:rgba(233,30,140,.08);border:1px solid rgba(233,30,140,.2);display:inline-flex;align-items:center;gap:.6rem}
+.bp-section-label::before{content:'★';font-size:.8rem}
+.bp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--gray-d);border:1px solid var(--gray-d)}
+.bp{background:var(--dark);padding:1.8rem;position:relative;overflow:hidden;transition:background .25s}
+.bp:hover{background:#0f1a28}
+.bp::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pink),transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.bp:hover::before{transform:scaleX(1)}
+.bp-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--pink);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid rgba(233,30,140,.25)}
+.bp ul{list-style:none}
+.bp ul li{font-size:.88rem;color:var(--white);line-height:1.65;margin-bottom:.6rem;padding-left:1rem;position:relative}
+.bp ul li::before{content:'→';color:var(--pink);position:absolute;left:0;font-size:.7rem;top:.05rem}
+
+/* INTERACTIVE COMPARE TOOL */
+.compare-tool{background:var(--panel);border:1px solid var(--gray-d);padding:2rem;margin:2rem 0}
+.compare-tool-h{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.4rem;text-transform:uppercase;color:var(--white);margin-bottom:.3rem}
+.compare-tool-sub{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.15em;color:var(--white);opacity:.6;text-transform:uppercase;margin-bottom:1.5rem}
+.compare-selectors{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.csel{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem 1.1rem;background:var(--dark);border:1px solid var(--gray-d);color:var(--white);cursor:pointer;transition:all .2s}
+.csel:hover{border-color:var(--pink)}
+.csel.active{background:var(--pink);border-color:var(--pink)}
+.compare-display{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-d);border:1px solid var(--gray-d)}
+.compare-side{background:var(--dark);padding:1.5rem}
+.compare-side-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--white);text-transform:uppercase;margin-bottom:1rem}
+.compare-metric{margin-bottom:1rem}
+.cm-name{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--white);opacity:.5;text-transform:uppercase;margin-bottom:.2rem}
+.cm-bar-wrap{height:10px;background:rgba(58,69,87,.4);border-radius:2px;margin-bottom:.3rem;overflow:hidden}
+.cm-bar{height:100%;border-radius:2px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.cm-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;color:var(--white)}
+#compare-insight{margin-top:1rem;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--white);opacity:.6;letter-spacing:.08em}
+
+/* CPD AWARENESS BRAND GRID */
+.awareness-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--gray-d);border:1px solid var(--gray-d);margin:1.5rem 0}
+.aw-cell{background:var(--panel2);padding:1.4rem 1rem;text-align:center;position:relative;transition:background .2s}
+.aw-cell:hover{background:#101828}
+.aw-cell::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue-l),var(--cyan))}
+.aw-brand{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;color:var(--white);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem}
+.aw-stat{margin-bottom:.6rem}
+.aw-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;line-height:1}
+.aw-lbl{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;color:var(--white);opacity:.6;text-transform:uppercase;margin-top:.1rem}
+.aw-placeholder{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--gray-d);letter-spacing:.1em;border:1px dashed var(--gray-d);padding:.4rem .6rem;margin-top:.6rem;text-align:center}
+
+/* SIDE NAV */
+.side-nav{position:fixed;right:1.8rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.6rem;z-index:100}
+.side-nav a{display:block;width:6px;height:6px;border-radius:50%;background:var(--gray-d);transition:background .25s,transform .25s}
+.side-nav a.active,.side-nav a:hover{background:var(--pink);transform:scale(1.8)}
+
+footer{padding:2.5rem 5vw;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--gray-d);flex-wrap:wrap;gap:1rem}
+footer .fl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.15em}
+footer .fr{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;color:var(--white);opacity:.4;text-align:right}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ══════════════════════════════════════════════════════════
+   🔥 TABLET RESPONSIVE (768px - 1024px)
+   ══════════════════════════════════════════════════════════ */
+@media(min-width:768px) and (max-width:1024px){
+  /* Hero ajustado */
+  .hero{padding:4rem 4vw 3.5rem}
+  .hero-types{flex-wrap:wrap}
+  .htype{padding:.6rem 1.2rem;font-size:.85rem}
+  .hero-top{top:2rem;right:4vw;flex-direction:column;align-items:flex-end;gap:.5rem}
+  
+  /* Sections */
+  section{padding:4rem 4vw}
+  .div-header{flex-direction:column;align-items:flex-start}
+  .div-info{text-align:left;max-width:100%}
+  
+  /* Metric cards: 2 columnas */
+  .metric-row{grid-template-columns:repeat(2,1fr)}
+  
+  /* Brand grid: sigue 2 cols pero con mejor spacing */
+  .brand-grid{gap:1px}
+  .brand-cell{padding:1.2rem}
+  
+  /* Charts: stacking en tablet portrait */
+  .chart-card{padding:1.2rem}
+  
+  /* Compare tool */
+  .compare-display{grid-template-columns:1fr 1fr}
+  
+  /* D2C block: 2×2 */
+  .d2c-inner{grid-template-columns:1fr 1fr}
+  .d2c-stat{padding:1.4rem 1rem}
+  
+  /* Tabs: scroll horizontal si es necesario */
+  .tab-nav{overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch}
+  .tab-btn{padding:.6rem 1.1rem;font-size:.85rem}
+  
+  /* Best practices: 2 cols */
+  .bp-grid{grid-template-columns:repeat(2,1fr)}
+  
+  /* Awareness grid: 3 cols en tablet */
+  .awareness-grid{grid-template-columns:repeat(3,1fr)}
+  
+  /* Side nav más pequeño */
+  .side-nav{right:1.2rem;gap:.5rem}
+  .side-nav a{width:5px;height:5px}
+}
+
+/* Tablet landscape específico */
+@media(min-width:768px) and (max-width:1024px) and (orientation:landscape){
+  .hero{min-height:90vh}
+  .hero-h{font-size:clamp(3.5rem,9vw,7rem)}
+}
+
+/* ══════════════════════════════════════════════════════════
+   📱 MOBILE (max 860px) - mejorado
+   ══════════════════════════════════════════════════════════ */
+@media(max-width:860px){
+  .brand-grid,.compare-display,.vs-grid{grid-template-columns:1fr}
+  .awareness-grid{grid-template-columns:repeat(2,1fr)}
+  .d2c-inner{grid-template-columns:1fr 1fr}
+  .side-nav{display:none}
+  
+  /* Hero mobile */
+  .hero-types{flex-wrap:wrap;width:100%}
+  .htype{flex:1;min-width:120px}
+  
+  /* Tabs mobile: mejor scroll */
+  .tab-nav{width:100%;overflow-x:auto}
+  .tab-btn{white-space:nowrap}
+  
+  /* Charts mobile: labels más pequeños */
+  .hbar-row{grid-template-columns:32px 1fr 48px;gap:.4rem}
+  .hbar-label{font-size:.75rem}
+  .hbar-val{font-size:.85rem}
+  .hbar-ctr-label{font-size:.6rem;right:-42px}
+  
+  /* Metric cards: auto-fit se adapta */
+  .metric-row{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+  body{font-size:14px}
+  .awareness-grid{grid-template-columns:1fr}
+  .d2c-inner{grid-template-columns:1fr}
+  .bp-grid{grid-template-columns:1fr}
+  
+  /* Hero ultra compact */
+  .hero{padding:3rem 4vw 2.5rem}
+  .hero-top{position:relative;top:auto;right:auto;margin-bottom:1.5rem;text-align:left}
+  
+  /* Ocultar cursor custom en mobile */
+  .cursor,.cursor-ring{display:none}
+  body{cursor:auto}
+}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cring"></div>
+
+<!-- TOOLTIP GLOBAL -->
+<div class="chart-tooltip" id="chart-tooltip">
+  <div class="tt-label"></div>
+  <div class="tt-content"></div>
+</div>
+
+<nav class="side-nav">
+  <a href="#hero"    title="Inicio"></a>
+  <a href="#resumen" title="Resumen"></a>
+  <a href="#cpd"     title="CPD"></a>
+  <a href="#ldb"     title="LDB"></a>
+  <a href="#dpp"     title="DPP"></a>
+  <a href="#lujo"    title="LUJO"></a>
+</nav>
+
+<div class="page">
+
+<!-- HERO -->
+<section class="hero" id="hero" style="border-bottom:1px solid var(--gray-d)">
+  <div class="hero-top">
+    <div>
+      <div class="logo" data-i18n="logo">L'ORÉAL CHILE</div>
+      <div class="period" data-i18n="period">MAYO / JUNIO · 2026</div>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+  <div class="eyebrow" data-i18n="eyebrow">DDX · Data &amp; Digital Experience · Cyber 2026</div>
+  <h1 class="hero-h">
+    <span class="outline" data-i18n="hero-title">CYBER</span>
+    <div class="hero-types">
+      <div class="htype"><span class="ht">0P</span><span class="hd" data-i18n="type-0p">Base CRM propia</span></div>
+      <div class="htype"><span class="ht">1P</span><span class="hd" data-i18n="type-1p">Sitio web · eventos</span></div>
+      <div class="htype"><span class="ht">FR</span><span class="hd" data-i18n="type-fr">Fishing Rules cross-brand</span></div>
+      <div class="htype"><span class="ht">2P</span><span class="hd" data-i18n="type-2p">Audiencias externas</span></div>
+    </div>
+    <span class="solid" data-i18n="hero-subtitle">Audiencias <em>1PD</em></span>
+  </h1>
+  <p class="hero-sub" data-i18n="hero-desc">Por qué las bases propias rinden mejor — CPD · LDB · DPP · LUJO D2C · Meta · Google Ads · DV360</p>
+  <div class="scroll-hint" data-i18n="scroll">SCROLL</div>
+</section>
+
+<!-- RESUMEN -->
+<section id="resumen">
+  <div class="sec-label rv" data-i18n="label-resumen">Resumen Ejecutivo</div>
+  <h2 class="sec-title rv"><span data-i18n="resumen-title-1">La data propia</span><br><em data-i18n="resumen-title-2">siempre gana</em></h2>
+
+  <div class="ctx rv d1">
+    <p data-i18n="resumen-intro">En Cyber, las audiencias <strong>0P y 1P superaron a las 2P en CTR en todas las divisiones</strong>. Los usuarios de la base propia ya conocen las marcas — su intención es real. Las 2P son útiles para <strong>escalar y nutrir</strong> la base, no para convertir. <em>Esta distinción es la clave del modelo.</em></p>
+  </div>
+
+  <div class="compare-tool rv d1">
+    <div class="compare-tool-h" data-i18n="compare-title">Comparador Interactivo · 1P vs 2P</div>
+    <div class="compare-tool-sub" data-i18n="compare-subtitle">Selecciona una división para ver el impacto de la data propia</div>
+    <div class="compare-selectors">
+      <button class="csel active" onclick="showCompare('ldb',this)">LDB</button>
+      <button class="csel" onclick="showCompare('dpp',this)">DPP</button>
+      <button class="csel" onclick="showCompare('lujo',this)">LUJO D2C</button>
+    </div>
+    <div class="compare-display" id="compare-display"></div>
+    <div id="compare-insight"></div>
+  </div>
+
+  <div class="rule rv d2"></div>
+  <div class="sec-label rv d2" data-i18n="label-highlights">Highlights del Cyber · Por División</div>
+  <div class="metric-row rv d2">
+    <div class="mc"><div class="mc-badge pk">LDB · 0P Meta</div><div class="mc-delta up">↑ CTR top</div><div class="mc-val pk">2,15%</div><div class="mc-lbl">CTR · 0P · La Roche-Posay</div><div class="mc-compare"><span class="v1">1P avg → 1,84% CTR · $0,12 CPC</span><span class="v2">2P → 0,3% CTR (awareness)</span></div></div>
+    <div class="mc"><div class="mc-badge pk">DPP · Google</div><div class="mc-delta up">↑ Demand Gen</div><div class="mc-val pk">3,58%</div><div class="mc-lbl">CTR · 0P · Demand Gen</div><div class="mc-compare"><span class="v1">1P Google → 3,25% · $0,15 CPC</span><span class="v2">FR CeraVe→LOP 3,01% CTR</span></div></div>
+    <div class="mc"><div class="mc-badge pk">LUJO · Meta</div><div class="mc-delta up">↑ Alto valor</div><div class="mc-val pk">2,37%</div><div class="mc-lbl">CTR · 0P · BBDD compradores</div><div class="mc-compare"><span class="v1">1P → 4,4% CTR · $0,14 CPC</span><span class="v2">70% mejor CTR que 2P</span></div></div>
+    <div class="mc"><div class="mc-badge gr">LUJO · Google Search</div><div class="mc-delta up">↑ Récord Cyber</div><div class="mc-val gr">17%</div><div class="mc-lbl">CTR · 1P · Lancôme Search</div><div class="mc-compare"><span class="v1">1P Google → 6,28% CTR</span><span class="v2">Mayor registro del Cyber</span></div></div>
+  </div>
+
+  <div class="rule rv d3"></div>
+  <div class="sec-label rv d3" data-i18n="label-why">Por qué funciona la data propia</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--gray-d);border:1px solid var(--gray-d);margin-bottom:2rem" class="rv d3">
+    <div style="background:var(--dark);padding:1.5rem 1.4rem"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--pink);margin-bottom:.4rem">0P</div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white);text-transform:uppercase;margin-bottom:.5rem" data-i18n="0p-title">Base CRM Propia</div><div style="font-size:.82rem;color:var(--white);line-height:1.65;opacity:.8" data-i18n="0p-desc">Emails y datos de clientes reales de L'Oréal. Usuarios que ya compraron, se registraron o interactuaron con la marca. <strong style="color:var(--white);opacity:1">Mayor intención de compra.</strong></div></div>
+    <div style="background:var(--dark);padding:1.5rem 1.4rem"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--pink);margin-bottom:.4rem">1P</div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white);text-transform:uppercase;margin-bottom:.5rem" data-i18n="1p-title">Visitantes del Sitio</div><div style="font-size:.82rem;color:var(--white);line-height:1.65;opacity:.8" data-i18n="1p-desc">Usuarios que visitaron páginas de producto, añadieron al carrito o vieron contenido. Señales de comportamiento real. <strong style="color:var(--white);opacity:1">Mid/lower funnel.</strong></div></div>
+    <div style="background:var(--dark);padding:1.5rem 1.4rem"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--blue-l);margin-bottom:.4rem">FR</div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white);text-transform:uppercase;margin-bottom:.5rem" data-i18n="fr-title">Fishing Rules</div><div style="font-size:.82rem;color:var(--white);line-height:1.65;opacity:.8" data-i18n="fr-desc">Cruces entre marcas con afinidad comprobada. Ej: visitantes de Kiehl's hacia SkinCeuticals. <strong style="color:var(--white);opacity:1">Amplía alcance con calidad.</strong></div></div>
+    <div style="background:var(--dark);padding:1.5rem 1.4rem;opacity:.55"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--gray-d);margin-bottom:.4rem">2P</div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white);text-transform:uppercase;margin-bottom:.5rem" data-i18n="2p-title">Audiencias Externas</div><div style="font-size:.82rem;color:var(--white);line-height:1.65" data-i18n="2p-desc">Segmentos por intereses de terceros. Útiles para escalar y nutrir la base 1P. <strong style="color:var(--white)">Awareness, no conversión.</strong></div></div>
+  </div>
+</section>
+
+<!-- CPD -->
+<section id="cpd">
+  <div class="div-header">
+    <div><div class="sec-label" data-i18n="label-division">División</div><div class="div-name">CPD</div></div>
+    <div class="div-info" data-i18n="cpd-desc">Consumer Products<br>L'Oréal Paris · Garnier · Maybelline · NYX · Vogue</div>
+  </div>
+
+  <div class="ctx rv">
+    <p data-i18n="cpd-intro">En CPD, la estrategia de Cyber se centró en <strong>amplificación de awareness</strong> con las 5 marcas de la división. Las campañas priorizaron <strong>impresiones y alcance</strong> como objetivo principal, usando las audiencias para maximizar la cobertura. Los datos de impresiones y CTR por marca <em>serán actualizados en cuanto llegue la información de la agencia.</em></p>
+  </div>
+
+  <div class="metric-row rv d1">
+    <div class="mc"><div class="mc-badge bl" data-i18n="cpd-impressions-badge">Impresiones</div><div class="mc-delta up">↑ <span data-i18n="cpd-impressions-delta">Amplificación</span></div><div class="mc-val bl">15,5M</div><div class="mc-lbl" data-i18n="cpd-impressions-label">15.544.561 impresiones totales</div><div class="mc-compare"><span class="v1">5 marcas · Meta + Google Ads</span><span class="v2">Derivación a Salco, Meli y Preunic</span></div></div>
+    <div class="mc"><div class="mc-badge gr" data-i18n="cpd-reach-badge">Alcance</div><div class="mc-delta up">↑ <span data-i18n="cpd-reach-delta">Personas únicas</span></div><div class="mc-val gr">4,67M</div><div class="mc-lbl" data-i18n="cpd-reach-label">4.674.020 personas alcanzadas</div><div class="mc-compare"><span class="v1">Cobertura awareness division</span></div></div>
+    <div class="mc"><div class="mc-badge gd">CPM</div><div class="mc-delta up">↑ <span data-i18n="cpd-cpm-delta">Eficiente</span></div><div class="mc-val gd">$1,56</div><div class="mc-lbl" data-i18n="cpd-cpm-label">Costo por 1.000 impresiones</div><div class="mc-compare"><span class="v1">USD · Promedio división</span></div></div>
+    <div class="mc"><div class="mc-badge bl" data-i18n="cpd-retail-badge">Retail Destino</div><div class="mc-val bl" style="font-size:1.6rem;margin-top:.4rem">Salco · Meli · Preunic</div><div class="mc-lbl" data-i18n="cpd-retail-label">Derivación al sitio de retails</div><div class="mc-compare"><span class="v1">Objetivo: tráfico a punto de venta</span></div></div>
+  </div>
+
+  <div class="insight rv d2"><p data-i18n="cpd-insight">CPD alcanzó <strong>4,67M de personas únicas</strong> con <strong>15,5M de impresiones</strong> a un CPM de <strong>$1,56</strong> — muy eficiente para awareness masivo. La derivación apuntó a <strong>Salco, Meli y Preunic</strong> como puntos de venta. El breakdown por marca está pendiente de la agencia.</p></div>
+
+  <div class="bp-section rv d3">
+    <div class="bp-section-label" data-i18n="bp-cpd-label">Best Practices · CPD</div>
+    <div class="bp-grid">
+      <div class="bp"><div class="bp-t" data-i18n="bp-cpd-1-title">Awareness como Objetivo Principal</div><ul><li data-i18n="bp-cpd-1-1">Priorizar 2P para maximizar alcance y cobertura en lanzamientos</li><li data-i18n="bp-cpd-1-2">CPM como KPI principal — no CTR ni conversión directa</li><li data-i18n="bp-cpd-1-3">Cada impresión es una oportunidad de construir marca</li></ul></div>
+      <div class="bp"><div class="bp-t" data-i18n="bp-cpd-2-title">Audiencias 1P para Amplificar</div><ul><li data-i18n="bp-cpd-2-1">Activar 1P progresivamente en lower funnel para eficiencia</li><li data-i18n="bp-cpd-2-2">Los usuarios que enganchan en awareness pasan a ser data 1P</li><li data-i18n="bp-cpd-2-3">AON activo para sostener volumen de datos propios</li></ul></div>
+      <div class="bp"><div class="bp-t" data-i18n="bp-cpd-3-title">Modelo de Alimentación</div><ul><li data-i18n="bp-cpd-3-1">2P captura → 1P activa → 0P convierte</li><li data-i18n="bp-cpd-3-2">CPD alimenta la base 1P de todo el ecosistema L'Oréal</li><li data-i18n="bp-cpd-3-3">Awareness hoy = intención mañana</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- LDB -->
+<section id="ldb">
+  <div class="div-header">
+    <div><div class="sec-label" data-i18n="label-division">División</div><div class="div-name">LDB</div></div>
+    <div class="div-info" data-i18n="ldb-desc">L'Oréal Dermatológica<br>La Roche-Posay · Vichy · CeraVe · SkinCeuticals</div>
+  </div>
+  <div class="ctx rv"><p data-i18n="ldb-intro"><strong>Cyber LDB</strong> priorizó inversión 0P y 1P en etapas mid/lower funnel. La estrategia fue eficiente gracias a activaciones de tráfico en Meta y <strong>Demand Gen en DV360</strong>. Las audiencias propias tuvieron CTR <em>6× mayor que las 2P</em>, priorizando calidad sobre volumen.</p></div>
+
+  <div class="metric-row rv d1">
+    <div class="mc"><div class="mc-badge pk">CTR Promedio 1P</div><div class="mc-delta up">↑ 6× vs 2P</div><div class="mc-val pk">1,84%</div><div class="mc-lbl">0P · FR · 1P combinadas</div><div class="mc-compare"><span class="v1">CPC promedio $0,12</span><span class="v2">2P → 0,3% CTR</span></div></div>
+    <div class="mc"><div class="mc-badge pk">CTR CRM Top</div><div class="mc-delta up">↑ Mejor audiencia</div><div class="mc-val pk">2,2%</div><div class="mc-lbl">BBDD Total La Roche-Posay</div><div class="mc-compare"><span class="v1">Qualified Visit Vichy → 2%+</span></div></div>
+    <div class="mc"><div class="mc-badge gr">DV360 · 1P</div><div class="mc-delta up">↑ Demand Gen</div><div class="mc-val gr">2,50%</div><div class="mc-lbl">CTR · CPC $0,04</div><div class="mc-compare"><span class="v1">Tráfico + Demand Gen</span></div></div>
+    <div class="mc"><div class="mc-badge bl">Top Fishing Rule</div><div class="mc-delta up">↑ Cross-brand</div><div class="mc-val bl">Kiehl's</div><div class="mc-lbl">FR hacia SkinCeuticals</div><div class="mc-compare"><span class="v1">L'Oréal Pro + Garnier también</span></div></div>
+  </div>
+
+  <div class="tab-nav rv d1">
+    <button class="tab-btn active" onclick="tab(this,'ldb-div')" data-i18n="tab-ldb-div">División · Meta + DV360</button>
+    <button class="tab-btn" onclick="tab(this,'ldb-marcas')" data-i18n="tab-ldb-marcas">Por Marca</button>
+    <button class="tab-btn" onclick="tab(this,'ldb-vs')" data-i18n="tab-ldb-vs">1P vs 2P</button>
+  </div>
+
+  <div class="tab-pane active" id="ldb-div">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-d);border:1px solid var(--gray-d)">
+      <div class="chart-card"><div class="chart-card-h">META · KPI's Audiencias <span class="pill m">0P · 1P · FR</span></div><div class="hbar-chart" id="hb-ldb-meta"></div><div class="chart-legend-row"><div class="leg"><div class="leg-b"></div>CPC (USD)</div><div class="leg"><div class="leg-d"></div>CTR (%)</div></div></div>
+      <div class="chart-card"><div class="chart-card-h">DV360 · KPI's Audiencias <span class="pill d">0P · 1P</span></div><div class="hbar-chart" id="hb-ldb-dv"></div><div class="chart-legend-row"><div class="leg"><div class="leg-b"></div>CPC (USD)</div><div class="leg"><div class="leg-d"></div>CTR (%)</div></div></div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="ldb-marcas">
+    <div class="brand-grid">
+      <div class="brand-cell">
